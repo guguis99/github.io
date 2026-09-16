@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    @keyframes floatBird {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-6px) rotate(3deg); }
+    }
+    .animate-bird {
+      animation: floatBird 2.5s ease-in-out infinite;
+    }
+    @keyframes jumpBar {
+      0% { height: 6px; }
+      100% { height: 28px; }
+    }
+    .bar {
+      animation: jumpBar 1s ease-in-out infinite alternate;
+    }
+  </style>
+</head>
+<body class="p-4 bg-gradient-to-br from-sky-100 via-sky-50 to-blue-100 text-slate-800 antialiased min-h-screen">
+  <div class="max-w-xl mx-auto space-y-4">
+    
+    <!-- Hero Profile -->
+    <div class="bg-white/85 backdrop-blur-md rounded-2xl p-6 shadow-md border border-sky-200 text-center relative overflow-hidden">
+      <div class="w-20 h-20 mx-auto bg-gradient-to-br from-sky-300 to-sky-500 rounded-full flex items-center justify-center text-4xl shadow-md animate-bird cursor-pointer" onclick="feedDove()">
+        🕊️
+      </div>
+      <h1 class="text-2xl font-black mt-3 text-sky-800">gugu의 하늘빛 공간 🕊️</h1>
+      <p class="text-xs text-sky-600 font-semibold mt-1">#구구 #비둘기러버 #K-POP_홀릭 #하늘색덕후</p>
+      <p class="text-sm text-slate-600 mt-3 leading-relaxed">
+        비둘기처럼 자유롭고, 신나는 케이팝처럼 통통 튀는 일상!<br/>
+        새를 사랑하는 <strong>gugu</strong>의 미니 홈페이지에 오신 것을 환영해요.
+      </p>
+    </div>
+
+    <!-- Bird Sanctuary (새 도감) -->
+    <div class="bg-white/85 backdrop-blur-md rounded-2xl p-5 shadow-md border border-sky-200">
+      <div class="flex items-center justify-between mb-3">
+        <h2 class="font-bold text-slate-800 text-sm flex items-center gap-1.5">
+          <span>🪶</span> gugu가 사랑하는 새 친구들
+        </h2>
+        <span class="text-xs text-sky-500 font-medium">카드를 눌러보세요!</span>
+      </div>
+      <div class="grid grid-cols-4 gap-2 text-center text-xs">
+        <div onclick="selectBird('🕊️ 하얀 비둘기', '내 최애! 울음소리도 구구~ 평화의 상징')" class="p-2.5 bg-sky-50 hover:bg-sky-100 rounded-xl cursor-pointer transition border border-sky-200">
+          <div class="text-2xl mb-1">🕊️</div>
+          <div class="font-bold text-sky-900">비둘기</div>
+          <div class="text-[10px] text-sky-600">최애 Pick!</div>
+        </div>
+        <div onclick="selectBird('🐦 참새', '통통하고 깡충깡충 귀여운 친구')" class="p-2.5 bg-sky-50 hover:bg-sky-100 rounded-xl cursor-pointer transition border border-sky-100">
+          <div class="text-2xl mb-1">🐦</div>
+          <div class="font-bold text-slate-700">참새</div>
+          <div class="text-[10px] text-slate-400">마당 요정</div>
+        </div>
+        <div onclick="selectBird('🦜 앵무새', '알록달록 깃털과 K-POP 떼창 파트너!')" class="p-2.5 bg-sky-50 hover:bg-sky-100 rounded-xl cursor-pointer transition border border-sky-100">
+          <div class="text-2xl mb-1">🦜</div>
+          <div class="font-bold text-slate-700">앵무새</div>
+          <div class="text-[10px] text-slate-400">재간둥이</div>
+        </div>
+        <div onclick="selectBird('🦉 올빼미', '새벽에 노래 들을 때 곁을 지켜주는 친구')" class="p-2.5 bg-sky-50 hover:bg-sky-100 rounded-xl cursor-pointer transition border border-sky-100">
+          <div class="text-2xl mb-1">🦉</div>
+          <div class="font-bold text-slate-700">부엉이</div>
+          <div class="text-[10px] text-slate-400">밤의 수호자</div>
+        </div>
+        <div onclick="selectBird('🐧 펭귄', '바다를 훨훨 날아다니는 뒤뚱 요정')" class="p-2.5 bg-sky-50 hover:bg-sky-100 rounded-xl cursor-pointer transition border border-sky-100">
+          <div class="text-2xl mb-1">🐧</div>
+          <div class="font-bold text-slate-700">펭귄</div>
+          <div class="text-[10px] text-slate-400">수영 챔프</div>
+        </div>
+        <div onclick="selectBird('🦩 플라밍고', '도도하고 우아한 핑크빛 실루엣')" class="p-2.5 bg-sky-50 hover:bg-sky-100 rounded-xl cursor-pointer transition border border-sky-100">
+          <div class="text-2xl mb-1">🦩</div>
+          <div class="font-bold text-slate-700">홍학</div>
+          <div class="text-[10px] text-slate-400">우아함</div>
+        </div>
+        <div onclick="selectBird('🦆 오리', '물 위를 둥둥 떠다니는 힐링 귀요미')" class="p-2.5 bg-sky-50 hover:bg-sky-100 rounded-xl cursor-pointer transition border border-sky-100">
+          <div class="text-2xl mb-1">🦆</div>
+          <div class="font-bold text-slate-700">오리</div>
+          <div class="text-[10px] text-slate-400">둥둥</div>
+        </div>
+        <div onclick="selectBird('🦚 공작새', '무대 의상처럼 화려한 깃털을 뽐내요!')" class="p-2.5 bg-sky-50 hover:bg-sky-100 rounded-xl cursor-pointer transition border border-sky-100">
+          <div class="text-2xl mb-1">🦚</div>
+          <div class="font-bold text-slate-700">공작새</div>
+          <div class="text-[10px] text-slate-400">엔딩 요정</div>
+        </div>
+      </div>
+      <div id="birdMsg" class="mt-3 p-2 bg-sky-100/60 rounded-lg text-center text-xs text-sky-800 font-medium">
+        🕊️ "구구~ 원하는 새를 클릭해 보세요!"
+      </div>
+    </div>
+
+    <!-- K-POP Player -->
+    <div class="bg-gradient-to-r from-sky-600 to-blue-700 text-white rounded-2xl p-5 shadow-lg relative overflow-hidden">
+      <div class="flex items-center justify-between mb-3">
+        <span class="text-[11px] font-bold tracking-wider opacity-80 uppercase">🎧 K-POP Lounge</span>
+        <div class="flex items-end gap-1 h-5">
+          <div class="w-1 bg-sky-200 rounded bar" style="animation-delay: 0.1s"></div>
+          <div class="w-1 bg-sky-200 rounded bar" style="animation-delay: 0.4s"></div>
+          <div class="w-1 bg-sky-200 rounded bar" style="animation-delay: 0.2s"></div>
+          <div class="w-1 bg-sky-200 rounded bar" style="animation-delay: 0.5s"></div>
+          <div class="w-1 bg-sky-200 rounded bar" style="animation-delay: 0.3s"></div>
+        </div>
+      </div>
+
+      <div class="flex items-center justify-between">
+        <div>
+          <div id="songTitle" class="text-base font-bold">Hype Boy</div>
+          <div id="songArtist" class="text-xs text-sky-200">NewJeans (뉴진스)</div>
+        </div>
+        <button onclick="pickSong()" class="bg-white text-sky-700 hover:bg-sky-50 px-3 py-1.5 rounded-full text-xs font-bold shadow transition">
+          곡 바꾸기 🎲
+        </button>
+      </div>
+
+      <div id="songComment" class="mt-3 pt-2.5 border-t border-sky-500/40 text-[11px] text-sky-100">
+        "청량하고 산뜻해서 푸른 하늘을 날아오르는 기분! 🩵"
+      </div>
+    </div>
+
+    <!-- Feed Gugu Mini Game -->
+    <div class="bg-white/85 backdrop-blur-md rounded-2xl p-4 shadow-md border border-sky-200 text-center">
+      <div class="text-xs font-semibold text-slate-500 mb-1">구구에게 모이 주기 🌾</div>
+      <div class="text-sm font-bold text-sky-700 mb-2">
+        먹은 모이: <span id="feedCount" class="text-lg text-sky-600">0</span>톨
+      </div>
+      <button onclick="feedDove()" class="bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-600 hover:to-blue-700 text-white font-bold text-xs px-5 py-2.5 rounded-full shadow-md transition active:scale-95">
+        구구야 모이 먹어! 🌾
+      </button>
+      <div id="feedText" class="text-[11px] text-slate-500 mt-2 min-h-[16px]">
+        버튼을 누르면 비둘기 구구가 기뻐해요!
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const songs = [
+      { t: "Hype Boy", a: "NewJeans", c: "청량하고 산뜻해서 푸른 하늘을 날아오르는 기분! 🩵" },
+      { t: "Supernova", a: "aespa", c: "도파민 폭발하는 힙하고 신나는 비트! 🪐" },
+      { t: "I AM", a: "IVE", c: "하늘 높이 비상하는 자신감 넘치는 보컬! 🕊️" },
+      { t: "한 페이지가 될 수 있게", a: "DAY6", c: "푸른 청춘의 하늘빛이 가득한 벅차오르는 명곡 🎸" },
+      { t: "블루밍", a: "아이유 (IU)", c: "통통 튀는 파란빛 설렘 가득한 멜로디 💙" }
+    ];
+
+    function pickSong() {
+      const s = songs[Math.floor(Math.random() * songs.length)];
+      document.getElementById('songTitle').textContent = s.t;
+      document.getElementById('songArtist').textContent = s.a;
+      document.getElementById('songComment').textContent = `"${s.c}"`;
+    }
+
+    function selectBird(name, desc) {
+      document.getElementById('birdMsg').innerHTML = `<strong>${name}</strong>: ${desc}`;
+    }
+
+    let count = 0;
+    const msgs = [
+      "구구~ 콕콕콕! 정말 맛있어요! 🕊️",
+      "날갯짓이 한결 가벼워졌어요 구구! ✨",
+      "신나서 케이팝 댄스를 추는 중! 💃",
+      "구구가 당신에게 행운의 하얀 깃털을 선물합니다! 🪶"
+    ];
+
+    function feedDove() {
+      count++;
+      document.getElementById('feedCount').textContent = count;
+      document.getElementById('feedText').textContent = msgs[count % msgs.length];
+    }
+  </script>
+</body>
+</html>
